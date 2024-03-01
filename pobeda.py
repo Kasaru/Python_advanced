@@ -1,14 +1,17 @@
+import codecs
 letters = ['а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п','р', 'с', 'т', 'у','ф','х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я']
-a = input().lower()
-for i in a:
-    print(letters[letters.index(i)-1], end='')
-# a = input().split()
-# for i in a:
-#     print(letters[int(i)-1], end='')
-
-#ТПШЙ - сочи
-# 14 10 15 6 18 1 13 28 15 29 6 3 16 5 29 - минералъные воды
-# ЛБМЙОЙОДСБЕ - калининград
-# 19 20 1 3 18 16 17 16 13 28 - ставрополъ
-# ГМБЕЙЛБГЛБИ - владикавказ
-# 3 16 13 4 16 4 18 1 5 - волгоград
+file = codecs.open('input.txt', 'r', "utf_8_sig")
+b = [line if line[1].isalpha() else line.split() for line in file]
+file.close()
+wfile = open("output.txt", "w")
+for j in b:
+    print()
+    wfile.write('\n')
+    for i in j:
+        if i.isdigit():
+            print(letters[int(i)-1], end='')
+            wfile.write(f'{letters[int(i)-1]}')
+        elif i.isalpha():
+            print(letters[letters.index(i.lower()) - 1], end='')
+            wfile.write(f'{letters[letters.index(i.lower()) - 1]}')
+wfile.close()
