@@ -12,6 +12,6 @@ for j in b:
             print(letters[int(i)-1], end='')
             wfile.write(f'{letters[int(i)-1]}')
         elif i.isalpha():
-            print(letters[letters.index(i.lower()) - 1], end='')
+            print(letters[-1 * letters.index(i.lower()) - 1], end='')
             wfile.write(f'{letters[letters.index(i.lower()) - 1]}')
 wfile.close()
